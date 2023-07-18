@@ -26,10 +26,10 @@
     $el.removeAttr('data-livestamp')
       .removeData('livestamp');
 
-    timestamp = moment(timestamp);
+    timestamp = moment(new Date(timestamp));
     if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
       var newData = $.extend({ }, { 'original': $el.contents() }, oldData);
-      newData.moment = moment(timestamp);
+      newData.moment = moment(new Date(timestamp));
       var attr = $el.attr('livestampaltformat');
       if (typeof attr !== typeof undefined && attr !== false) {
         newData.livealtformat = attr;
@@ -122,7 +122,7 @@
     add: function($el, timestamp) {
       if ((typeof timestamp === 'number') && !useNativeTimestamps)
         timestamp *= 1e3;
-      timestamp = moment(timestamp);
+      timestamp = moment(new Date(timestamp));
 
       if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
         $el.each(function() {
