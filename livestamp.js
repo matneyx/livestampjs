@@ -1,4 +1,4 @@
-// Livestamp.js / v2.0.0 / (c) 2015 Matt Bradley / MIT License
+// Livestamp.js / v2.1.0 / (c) 2015 Matt Bradley / MIT License
 (function (plugin) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -8,27 +8,28 @@
     plugin(jQuery, moment);
   }
 }(function($, moment) {
-  var updateInterval = 1e3,
+  var updateInterval = 1000,
       useNativeTimestamps = false,
       paused = false,
       updateID = null,
-      $livestamps = $([]),
+      $livestamps = $([]);
 
-  init = function() {
+  var init = function() {
     livestampGlobal.resume();
-  },
+  };
 
-  prep = function($el, timestamp) {
+  var prep = function($el, timestamp) {
     var oldData = $el.data('livestampdata');
-    if ((typeof timestamp === 'number') && !useNativeTimestamps)
-      timestamp *= 1e3;
+    if (typeof timestamp === 'number' && !useNativeTimestamps) {
+      timestamp *= 1000;
+    }
 
     $el.removeAttr('data-livestamp')
       .removeData('livestamp');
 
     timestamp = moment(new Date(timestamp));
     if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
-      var newData = $.extend({ }, { 'original': $el.contents() }, oldData);
+      var newData = $.extend({}, { 'original': $el.contents() }, oldData);
       newData.moment = moment(new Date(timestamp));
       var attr = $el.attr('livestampaltformat');
       if (typeof attr !== typeof undefined && attr !== false) {
@@ -40,18 +41,16 @@
       $el.data('livestampdata', newData).empty();
       $livestamps.push($el[0]);
     }
-  },
+  };
 
-  run = function() {
+  var run = function() {
     if (paused) return;
     livestampGlobal.update();
-  },
+  };
 
-  livestampGlobal = {
+  var livestampGlobal = {
     update: function() {
-      // Clear any timeout in case we're called before it fires.
       clearTimeout(updateID);
-      // Schedule the next update if appropriate.
       if (!paused) {
         updateID = setTimeout(run, updateInterval);
       }
@@ -67,32 +66,34 @@
             data = $this.data('livestampdata'),
             includeSuffix = ($this.data('livestamp-suffix') === true);
 
-        if (data === undefined)
+        if (data === undefined) {
           toRemove.push(this);
-        else if (moment.isMoment(data.moment)) {
+        } else if (moment.isMoment(data.moment)) {
           var from = $this.html(),
               to = data.moment.fromNow(!includeSuffix);
 
-          if (from != to) {
+          if (from !== to) {
             var e = $.Event('change.livestamp');
             $this.trigger(e, [from, to]);
-            if (!e.isDefaultPrevented())
+            if (!e.isDefaultPrevented()) {
               $this.html(to);
+            }
           }
           
-          var from = $this.attr("title"),
-              to = data.moment.format(data.livealtformat);
-          if (from != to) {
-            var e = $.Event('change.title');
-            $this.trigger(e, [from, to]);
-            if (!e.isDefaultPrevented())
-              $this.attr('title',to);
+          var titleFrom = $this.attr("title"),
+              titleTo = data.moment.format(data.livealtformat);
+          if (titleFrom !== titleTo) {
+            var event = $.Event('change.title');
+            $this.trigger(event, [titleFrom, titleTo]);
+            if (!event.isDefaultPrevented()) {
+              $this.attr('title', titleTo);
+            }
           }
         }
       });
 
       $livestamps = $livestamps.not(toRemove);
-      delete $livestamps.prevObject
+      delete $livestamps.prevObject;
     },
 
     pause: function() {
@@ -105,8 +106,9 @@
     },
 
     interval: function(interval) {
-      if (interval === undefined)
+      if (interval === undefined) {
         return updateInterval;
+      }
       updateInterval = interval;
     },
 
@@ -116,12 +118,13 @@
       }
       useNativeTimestamps = nativeTimestamps;
     }
-  },
+  };
 
-  livestampLocal = {
+  var livestampLocal = {
     add: function($el, timestamp) {
-      if ((typeof timestamp === 'number') && !useNativeTimestamps)
-        timestamp *= 1e3;
+      if (typeof timestamp === 'number' && !useNativeTimestamps) {
+        timestamp *= 1000;
+      }
       timestamp = moment(new Date(timestamp));
 
       if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
@@ -140,8 +143,9 @@
         var $this = $(this),
             data = $this.data('livestampdata');
 
-        if (data === undefined)
+        if (data === undefined) {
           return $el;
+        }
 
         $this
           .html(data.original ? data.original : '')
