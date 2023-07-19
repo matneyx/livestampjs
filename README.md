@@ -1,6 +1,6 @@
-This is a fork of https://github.com/mattbradley/livestampjs, which appears to be abandoned.
+This is a fork of https://github.com/matneyx/livestampjs, which appears to be abandoned.
 
-[Livestamp.js](http://mattbradley.github.com/livestampjs)
+[Livestamp.js](http://matneyx.github.com/livestampjs)
 =====================================================
 
 A simple, unobtrusive jQuery plugin that provides auto-updating timeago text to
@@ -9,7 +9,7 @@ your timestamped HTML elements using [Moment.js](http://momentjs.com).
 Usage
 -----
 
-See the [livestamp documentation](http://mattbradley.github.com/livestampjs).
+See the [livestamp documentation](http://matneyx.github.com/livestampjs).
 
 Dependencies
 ------------

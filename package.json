@@ -1,19 +1,19 @@
 {
-  "name": "livestamp",
-  "version": "2.0.0",
+  "name": "@matneyx/livestamp",
+  "version": "2.1.0",
   "main": "livestamp",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattbradley/livestampjs.git"
+    "url": "git://github.com/matneyx/livestampjs.git"
   },
   "description": "A simple, unobtrusive jQuery plugin that provides auto-updating timeago text to your timestamped HTML elements using Moment.js.",
   "keywords": ["livestamp", "timestamp", "timeago"],
-  "homepage": "http://mattbradley.github.com/livestampjs",
-  "bugs": "https://github.com/mattbradley/livestampjs/issues",
+  "homepage": "http://matneyx.github.com/livestampjs",
+  "bugs": "https://github.com/matneyx/livestampjs/issues",
   "license": "MIT",
   "author": {
-      "name": "Matt Bradley",
-      "url": "https://twitter.com/mattbradley"
+      "name": "Matt Bradley c/o Dave Matney",
+      "url": "https://twitter.com/matneyx"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
