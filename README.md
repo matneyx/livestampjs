@@ -1,3 +1,5 @@
+This is a fork of https://github.com/mattbradley/livestampjs, which appears to be abandoned.
+
 [Livestamp.js](http://mattbradley.github.com/livestampjs)
 =====================================================
 
