@@ -4,7 +4,7 @@ This is a fork of https://github.com/matneyx/livestampjs, which appears to be ab
 =====================================================
 
 A simple, unobtrusive jQuery plugin that provides auto-updating timeago text to
-your timestamped HTML elements using [Moment.js](http://momentjs.com).
+your timestamped HTML elements using [Day.js](http://day.js.org).
 
 Usage
 -----
@@ -15,7 +15,7 @@ Dependencies
 ------------
 
 * [jQuery](http://jquery.com): you already know what this is
-* [Moment.js](http://momentjs.com): a great JavaScript library for parsing
+* [Day.js](http://day.js.org): a great JavaScript library for parsing
   and displaying dates and times
 
 License

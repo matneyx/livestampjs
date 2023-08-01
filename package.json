@@ -1,12 +1,12 @@
 {
   "name": "@matneyx/livestamp",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "main": "livestamp",
   "repository": {
     "type": "git",
     "url": "git://github.com/matneyx/livestampjs.git"
   },
-  "description": "A simple, unobtrusive jQuery plugin that provides auto-updating timeago text to your timestamped HTML elements using Moment.js.",
+  "description": "A simple, unobtrusive jQuery plugin that provides auto-updating timeago text to your timestamped HTML elements using Day.js.js.",
   "keywords": ["livestamp", "timestamp", "timeago"],
   "homepage": "http://matneyx.github.com/livestampjs",
   "bugs": "https://github.com/matneyx/livestampjs/issues",

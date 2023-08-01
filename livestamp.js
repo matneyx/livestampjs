@@ -2,12 +2,12 @@
 (function (plugin) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['jquery', 'moment'], plugin);
+    define(['jquery', 'dayjs'], plugin);
   } else {
     // Browser globals
-    plugin(jQuery, moment);
+    plugin(jQuery, dayjs);
   }
-}(function($, moment) {
+}(function($, dayjs) {
   var updateInterval = 1e3,
       useNativeTimestamps = false,
       paused = false,
@@ -26,10 +26,10 @@
     $el.removeAttr('data-livestamp')
       .removeData('livestamp');
 
-    timestamp = moment(new Date(timestamp));
-    if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
+    timestamp = dayjs(new Date(timestamp));
+    if (dayjs.isDayjs(timestamp) && !isNaN(+timestamp)) {
       var newData = $.extend({ }, { 'original': $el.contents() }, oldData);
-      newData.moment = moment(new Date(timestamp));
+      newData.dayjs = dayjs(new Date(timestamp));
       var attr = $el.attr('livestampaltformat');
       if (typeof attr !== typeof undefined && attr !== false) {
         newData.livealtformat = attr;
@@ -69,9 +69,9 @@
 
         if (data === undefined)
           toRemove.push(this);
-        else if (moment.isMoment(data.moment)) {
+        else if (dayjs.isDayjs(data.dayjs)) {
           var from = $this.html(),
-              to = data.moment.fromNow(!includeSuffix);
+              to = data.dayjs.fromNow(!includeSuffix);
 
           if (from != to) {
             var e = $.Event('change.livestamp');
@@ -81,7 +81,7 @@
           }
           
           var from = $this.attr("title"),
-              to = data.moment.format(data.livealtformat);
+              to = data.dayjs.format(data.livealtformat);
           if (from != to) {
             var e = $.Event('change.title');
             $this.trigger(e, [from, to]);
@@ -122,9 +122,9 @@
     add: function($el, timestamp) {
       if ((typeof timestamp === 'number') && !useNativeTimestamps)
         timestamp *= 1e3;
-      timestamp = moment(new Date(timestamp));
+      timestamp = dayjs(new Date(timestamp));
 
-      if (moment.isMoment(timestamp) && !isNaN(+timestamp)) {
+      if (dayjs.isDayjs(timestamp) && !isNaN(+timestamp)) {
         $el.each(function() {
           prep($(this), timestamp);
         });
