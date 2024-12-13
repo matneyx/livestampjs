@@ -1,4 +1,4 @@
-This is a fork of https://github.com/matneyx/livestampjs, which appears to be abandoned.
+This is a fork of https://github.com/mattbradley/livestampjs, which appears to be abandoned.
 
 [Livestamp.js](http://matneyx.github.com/livestampjs)
 =====================================================
